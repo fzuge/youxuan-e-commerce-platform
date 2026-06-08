@@ -3,7 +3,7 @@ import axios from 'axios'
 // import { ElMessage } from 'element-plus'
 // import { useUserStore } from '@/stores/userStore'
 const httpInstance = axios.create({
-  baseURL: 'api',
+  baseURL: '/api',
   timeout: 5000,
 })
 
