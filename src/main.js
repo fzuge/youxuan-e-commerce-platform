@@ -9,6 +9,7 @@ import { getCategory } from './apis/testAPI'
 import '@/styles/common.scss'
 import { appPlugin } from '@/directives/index.js'
 
+import { componentPlugin } from '@/components/index.js'
 getCategory().then((res) => {
   // console.log(res)
 })
@@ -17,5 +18,6 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(appPlugin)
+app.use(componentPlugin)
 
 app.mount('#app')
