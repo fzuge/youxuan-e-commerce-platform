@@ -10,14 +10,17 @@ import '@/styles/common.scss'
 import { appPlugin } from '@/directives/index.js'
 
 import { componentPlugin } from '@/components/index.js'
-getCategory().then((res) => {
-  // console.log(res)
-})
-const app = createApp(App)
 
-app.use(createPinia())
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+const app = createApp(App)
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+app.use(pinia)
 app.use(router)
 app.use(appPlugin)
 app.use(componentPlugin)
-
+getCategory().then((res) => {
+  // console.log(res)
+})
 app.mount('#app')
