@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { useUserStore } from './user'
-import { insertCartAPI, findNewCartListAPI } from '@/apis/cart'
+import { insertCartAPI, findNewCartListAPI, delCartAPI } from '@/apis/cart'
 export const useCartStore = defineStore(
   'cart',
   () => {
@@ -9,12 +9,16 @@ export const useCartStore = defineStore(
     const isLogin = computed(() => useStore.userInfo.token)
     const cartList = ref([])
 
+    const updataNewList = async () => {
+      const res = await findNewCartListAPI()
+      cartList.value = res.result
+    }
+
     const addCart = async (goods) => {
       const { skuId, count } = goods
       if (isLogin.value) {
-        const res = await insertCartAPI({ skuId, count })
-        await findNewCartListAPI()
-        cartList.value = res.result
+        await insertCartAPI({ skuId, count })
+        updataNewList()
       } else {
         const item = cartList.value.find((item) => goods.skuId === item.skuId)
         if (item) {
@@ -25,12 +29,18 @@ export const useCartStore = defineStore(
       }
     }
 
-    const delCart = (skuId) => {
-      console.log('传入的 skuId:', skuId, '类型:', typeof skuId)
-      console.log('购物车内容:', JSON.stringify(cartList.value))
-      const idx = cartList.value.findIndex((item) => skuId === item.skuId)
-      console.log('findIndex 结果:', idx)
-      cartList.value.splice(idx, 1)
+    const delCart = async (skuId) => {
+      if (isLogin.value) {
+        await delCartAPI([skuId])
+        updataNewList()
+      } else {
+        const idx = cartList.value.findIndex((item) => skuId === item.skuId)
+        cartList.value.splice(idx, 1)
+      }
+    }
+
+    const clearCart = () => {
+      cartList.value = []
     }
 
     const singleCheck = (skuId, selected) => {
@@ -64,6 +74,8 @@ export const useCartStore = defineStore(
       allCheck,
       selectedCount,
       selectedPrice,
+      clearCart,
+      updataNewList,
     }
   },
   {
