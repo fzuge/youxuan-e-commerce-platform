@@ -1,19 +1,19 @@
-# 小兔鲜儿
+# 优选电商平台
 
-基于 Vue 3 构建的全功能电商前端项目，涵盖商品浏览、购物车、结算、支付、用户中心等完整购物流程。
+基于Vue3+Vite独立开发电商前端应用，涵盖首页、商品分类、商品详情、购物车、结算支付、登录注册、个人中心等完整业务流程，适配登录/非登录双模式。
 
 ## 技术栈
 
-| 类别         | 技术                          |
-| ------------ | ----------------------------- |
-| 框架         | Vue 3（Composition API）      |
-| 构建工具     | Vite                          |
-| 状态管理     | Pinia（含持久化插件）         |
-| 路由         | Vue Router                    |
-| UI 组件库    | Element Plus                  |
-| HTTP 客户端  | Axios                         |
-| CSS 预处理   | SCSS                          |
-| 工具库       | @vueuse/core、dayjs           |
+| 类别        | 技术                     |
+| ----------- | ------------------------ |
+| 框架        | Vue 3（Composition API） |
+| 构建工具    | Vite                     |
+| 状态管理    | Pinia（含持久化插件）    |
+| 路由        | Vue Router               |
+| UI 组件库   | Element Plus             |
+| HTTP 客户端 | Axios                    |
+| CSS 预处理  | SCSS                     |
+| 工具库      | @vueuse/core、dayjs      |
 
 ## 功能特性
 
@@ -132,4 +132,4 @@ import { getUserInfo } from '@/apis/user'
 
 ### 代码格式化
 
-项目使用 Prettier 进行代码格式化，配置见 `.prettierrc.json`。推荐使用 VS Code 并安装 Prettier 扩展，保存时自动格式化。
+# 项目使用 Prettier 进行代码格式化，配置见 `.prettierrc.json`。推荐使用 VS Code 并安装 Prettier 扩展，保存时自动格式化。
