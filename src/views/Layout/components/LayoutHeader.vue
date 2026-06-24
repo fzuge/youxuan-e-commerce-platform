@@ -8,7 +8,7 @@ const categoryStore = useCategoryStore()
   <header class="app-header">
     <div class="container">
       <h1 class="logo">
-        <RouterLink to="/">小兔鲜</RouterLink>
+        <RouterLink to="/">优选</RouterLink>
       </h1>
       <ul class="app-header-nav">
         <li class="home">
